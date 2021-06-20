@@ -1,0 +1,36 @@
+{{>header}}
+{{>navbar}}
+<div class="container my-5 w-50">
+{{#if errFlag}}
+<div class="container alert alert-danger my-3 ">
+    <ul>
+    {{#each err}}
+<li>{{this}}</li>
+    {{/each}}
+    </ul>
+</div>
+{{/if}}
+
+
+<form>
+  <div class="mb-3">
+    <input type="text" class="form-control" name="title" placeholder="Title" value={{taskTitle}}>
+  </div>
+  <div class="mb-3">
+    <input type="text" class="form-control" name="content" placeholder="Task Details" value={{taskContent}}>
+  </div>
+  
+  <div class="mb-3">
+    <select class="form-select w-25" aria-label="Default select example" name="status" >
+    <option {{#if status.Status }} selected{{/if}}>Status</option>
+    <option {{#if status.Pending }} selected{{/if}} value="Pending">Pending</option>
+    <option {{#if status.InProgress }} selected{{/if}} value="InProgress">In progress</option>
+    <option {{#if status.Solved }} selected{{/if}} value="Solved">Solved</option>
+    </select>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</div>
+{{>footer}}
