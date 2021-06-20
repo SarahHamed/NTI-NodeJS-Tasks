@@ -51,7 +51,7 @@ editSingleTask=(req,res)=>{
     status[task['status']]=1;
 
     if(Object.keys(req.query).length == 0){
-        res.render('addTaskForm',{pageTitle:'Edit task', taskTitle:task.title, taskContent:task.content,status})
+        res.render('taskForm',{pageTitle:'Edit task', taskTitle:task.title, taskContent:task.content,status})
        }
     else{
         if(req.query.title == '') errors.push('invalid title')
@@ -63,7 +63,7 @@ editSingleTask=(req,res)=>{
             res.render('showSingleTask.hbs',{task:allTasks[index],successFlag:true}) 
           }
           else{
-            res.render('addTaskForm.hbs',{taskTitle:task.title, taskContent:task.content,status,err:errors,errFlag:true}) 
+            res.render('taskForm.hbs',{taskTitle:task.title, taskContent:task.content,status,err:errors,errFlag:true}) 
           }
     }
 }
@@ -81,31 +81,25 @@ addTaskController = ( req, res )=>{
         Solved:0
    }
    errors=[]
-   /*
-    if(req.query.status)
-        status[req.query.status]=1;
-    if(req.query.title == '' || req.query.content == ''|| req.query.status=='Status'){
-        task = req.query
-    }*/
+
     if(Object.keys(req.query).length != 0){
             if(req.query.title == '') errors.push('invalid title')
             if(req.query.content == '') errors.push('invalid content')
 
             if(errors.length != 0) {
-                res.render('addTaskForm.hbs',{taskTitle:req.query.title, taskContent:req.query.content,status,err:errors,errFlag:true}) 
+                res.render('taskForm.hbs',{taskTitle:req.query.title, taskContent:req.query.content,status,err:errors,errFlag:true}) 
                 }
         
     if(req.query.title && req.query.content && req.query.status!='Status'){ 
         let id=  (new Date()).getTime()
         let task= {id,...req.query}
-        console.log(status)
-        console.log(task)
+
         addTask(task)
         req.query=null
         res.redirect('/')
     }
 }
-    res.render('addTaskForm', {pageTitle:'add new task', taskTitle:task.title, taskContent:task.content,status})
+    res.render('taskForm', {pageTitle:'add new task', taskTitle:task.title, taskContent:task.content,status})
 
 }
 showSingleTask =(req, res)=>
