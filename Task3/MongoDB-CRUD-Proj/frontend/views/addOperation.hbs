@@ -1,0 +1,21 @@
+{{>header}}
+<!--<form method="POST">-->
+    <div class="text-center mt-5"><h3>Add Operation</h3></div>
+<div class="container my-5 mx-auto d-flex align-items-center ">
+    <div class="my-5 col-md-4 m-auto justify-content-center">
+        
+        <form method="POST">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="amount" placeholder="amount" value={{operation.amount}}>
+        </div>
+        <div class="mb-3">
+            <input type="date" class="form-control" name="date" placeholder="date" value={{operation.date}}>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="location" placeholder="location" value={{operation.location}}>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{{>footer}}

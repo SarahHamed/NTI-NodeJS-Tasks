@@ -1,0 +1,33 @@
+<!--Operations Page user id is {{id}}-->
+{{>header}}
+<h4 class="text-center m-5">Show All Operations</h4>
+<div class="table-responsive mx-5">
+<table class="table table-striped container m-auto" >
+    <thead>
+  <tr>
+    <th>Operation ID</th>
+    <th>Amount</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Delete</th>
+    <th>Edit</th>
+    <th>Show</th>
+  </tr>
+  </thead>
+{{#each operations}}
+<tr>
+    <td>{{this._id}}</td>
+    <td>{{this.amount}}</td>
+    <td>{{this.date}}</td>
+    <td>{{this.location}}</td>
+    <td><a class="btn btn-sm btn-dark" href="/delete/{{this._id}}">delete</a></td>
+    <td><a class="btn btn-sm btn-danger px-3" href="/edit/{{this._id}}">edit</a></td>
+    <td><a class="btn btn-sm btn-dark px-3" href="/showSingleOp/{{this._id}}">show</a></td>
+</tr>
+{{/each}}
+</table>
+<div class="d-flex justify-content-center m-5">
+<a class="btn btn-dark px-3 mx-auto" href="/addOperation">Add Operation</a>
+</div>
+</div>
+{{>footer}}
